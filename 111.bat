@@ -6,5 +6,5 @@ git add *.user
  git add *.filters 
  git add *.bat
 git commit -am "lab 22/09/2018 14-35"
-git push nemo master
+git push https://github.com/MarieMayorova/nemo master
 pause
