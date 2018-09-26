@@ -3,41 +3,35 @@
 
 #include "stdafx.h"
 #include <iostream>
-
+using namespace std;
 int main()
 { 
 	int a = 300;
 	int b = 560;
 
 
-	std::cout << "a*a*b*b=" << a * a * b * b << std::endl;
-	std::cout << "b/a="  << 1. * b/a << std::endl;// % остаток от деления
-	std::cout << "symbol_A+a=" << 'A' + a << std::endl;
+	cout << "a*a*b*b=" << a * a * b * b << endl;
+	cout << "b/a="  << 1. * b/a << endl;// % остаток от деления
+	cout << "symbol_A+a=" << 'A' + a << endl;
 	
-	int max_int, min_int;
-		bool max_bool, min_bool;
-		char max_char, min_char;
-		short max_short, min_short;
-		long max_long, min_long;
-		long long max_long_long, min_long_long;
+	cout << "type\t\t";
+	cout << "size\t\t";
+	cout << "min\t\t\t";
+	cout << "max";
 
-	std::cout << "type\t";
-	std::cout << "size\t";
-    std::cout << "min\t";
-	std::cout << "max\t";
+	cout << " \n bool\t\t" << sizeof(bool) << "\t\t" << 0 << "\t\t\t" << 1 << endl;
+	cout << " char\t\t" << sizeof(char) << "\t\t" << CHAR_MIN << "\t\t\t" << CHAR_MAX << endl;
+	cout << " int\t\t" << sizeof(int) << "\t\t" << INT_MIN << "\t\t" << INT_MAX << endl;
+	cout << " short\t\t" << sizeof(short) << "\t\t" << SHRT_MIN << "\t\t\t" << SHRT_MAX << endl;
+	cout << " long\t\t" << sizeof(int) << "\t\t" << LONG_MIN << "\t\t" << LONG_MAX << endl;
+	cout << " long long\t" << sizeof(long long) << "\t\t" << LLONG_MIN << "\t" << LLONG_MAX << endl;
 
-
-	std::cout << "\n bool\t" << sizeof(bool) << std::endl;
-	std::cout << "char\t" << sizeof(char) << std::endl;
-	std::cout << "int\t" << sizeof(int) << std::endl;
-	std::cout << "short\t" << sizeof(short) << std::endl;
-	std::cout << "long\t" << sizeof(long) << std::endl;
-	std::cout << "long long\t" << sizeof(long long) << std::endl;
-
-	
-	
-	
-
-    return 0;
+	return 0;
 }
+
+	
+	
+	
+
+  
 
