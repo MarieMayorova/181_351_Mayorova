@@ -27,6 +27,8 @@ int* input_array()
 	}
 	return arr;
 }
+int func(int num_1, int num_2);
+
 int main()
 {
 	/*char str[10] = { 'a', 'b', 'c', 'd','e','f','g','h','i','z' };
@@ -49,14 +51,17 @@ int main()
 	for (int iter = 0; iter < 10; iter++) {
 		print_array(arr[iter]) 
 	};*/
-	int num_1 = 0, num_2=0, res = 0;
+	int num_1 = 1, num_2=2, res = 0;
 	res = func(num_1, num_2);
 	std::cout << res << num_1 << num_2 << std::endl;
 	return 0;
 }
 
 	int func(int num_1, int num_2)
-	{return num_1 + num_2; }
+	{
+		return num_1 + num_2; 
+	}
+	
 	
 	
 	
