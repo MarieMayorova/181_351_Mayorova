@@ -5,6 +5,6 @@ git add  *.vcxproj
 git add *.user 
  git add *.filters 
  git add *.bat
-git commit -am "lab 22/09/2018 14-35"
+git commit -am "lab %DATE% %TIME%"
 git push origin master
 pause
