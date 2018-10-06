@@ -17,7 +17,9 @@ int main() {
 	for (int i = 0; i<10; i++) {
 
 		std::cout << bubble[i] << std::endl;
+		
 	}
+	for (char w = 'a'; w <= 'z'; w++) { w = w + 3; std::cout << w << std::endl ; };
 
 	return 0;
 }
