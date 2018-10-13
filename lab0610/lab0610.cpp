@@ -49,6 +49,10 @@ public://спецификаторы доступа,можно обратитьс
 
 		//проверять на отсутствие цифр,точек и др
 	}; 
+		bool set_second_name(char p_second_name[255])
+		{
+			return true;
+		};
 	
 		bool set_birthdate(char p_birthdate[11])
 		{
@@ -82,13 +86,23 @@ public://спецификаторы доступа,можно обратитьс
 	//деструктор
 	//
 	//
-	user_data::user_data(char p_first_name[255], char p_second_name[255], char p_str_passport[11], char p_str_birthdate[11], )
+	user_data::user_data(char p_first_name[255], char p_second_name[255], char p_str_passport[11], char p_str_birthdate[11],)
 	{
-		set_first_name; set_second_name; set_passport; set_birthdate;
+		if (set_first_name(p_first_name) && set_second_name(p_second_name)
+			&& set_passport(p_str_passport) && set_birthdate(p_str_birthdate))
+		{
+			std::cout << "User OK\n";
+		};
+		else { std::cout << "User error" }
 	}
 	user_data::user_data(char p_firstname[255], char p_secondname[255])
 	{
-		set_first_name; set_second_name;
+		if (set_first_name(p_firstname) && set_second_name(p_secondname))
+		{
+			std::cout << "User OK\n";
+		};
+		else { std::cout << "User error"; };
+
 	}
 	
 int main()
