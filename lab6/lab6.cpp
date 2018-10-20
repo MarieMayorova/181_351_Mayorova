@@ -54,12 +54,12 @@ bool matrix::sumMatrix(matrix matr2)
 	}
 	//Сравнить количестве столбцов текущей матрицы с количеством строк matr2
 
-	//Для каждого элемента matr[row][col] += matr2.getElem(row,col)
+	matr[row][col] += matr2.getElem(row, col);
 	return true;
 }
 bool matrix::transp()
 {
-	int res[10][10];
+	//int res[10][10];
 
 	return false;
 }
