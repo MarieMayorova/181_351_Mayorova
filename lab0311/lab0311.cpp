@@ -17,11 +17,21 @@
 //this->property2=this->property2+property1;
 
 #include "stdafx.h"
-
-
+#include <iostream>
+double getElem(int a, char b);
+double getElem(int a_l, char b_l, int c_k);
+double getElem(int a, char b)
+{
+	return a*b;
+}
+double getElem(int a_l, char b_l, int c_k) 
+{
+	return a_l + b_l + c_k;
+}
 int main()
 {
-
-    return 0;
-}
+		std::cout << "a*b="  << getElem(5,6) << std::endl; 
+		std::cout << "a_l+b_l+c_k=" << getElem(3,6.5,8) << std::endl;
+		return 0;
+	}
 
