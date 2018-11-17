@@ -27,8 +27,8 @@ _declspec(dllexport) -директива указывающая в каком порядке передавать параметры
 
 */
 
-int disc(float a, float b, float c)
+int func2(float a, float b, float c)
 {
-	return b*b+4*a*c;
+	return b*b-4*a*c;
 }
 
