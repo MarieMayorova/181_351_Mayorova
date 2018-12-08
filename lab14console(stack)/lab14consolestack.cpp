@@ -1,5 +1,6 @@
-#include <iostream> 
 
+#include "stdafx.h"
+#include <iostream> 
 #include <stack> // подключаем библиотеку для использования стека 
 #include <queue> // подключили библиотеку для использования очереди 
 #include <deque> // подключили библиотеку для использования дека 
@@ -41,20 +42,20 @@ int main()
 
 	std::stack<int> stackInt;//stack <тип данных> <имя>; -создание стека 
 	int i = 0, a = 0;
-	std::cout « "Введите 5 целых чисел: " « std::endl;
+	std::cout << "Введите 5 целых чисел: " << std::endl;
 	while (i != 5) {
-		std::cin » a;
-		stackInt.push(a); // добавляем введенное число 
+		std::cin >> a;
+		stackInt.push(a); // добавляем введенное число (автоматически заполняет стек)
 		i++;
 	}
 
 	if (stackInt.empty()) // проверяем пуст ли стек (нет) 
-		std::cout « "Стек не пуст";
+		std::cout << "Стек не пуст";
 
-	std::cout « "Верхний элемент стека: " « stackInt.top() « std::endl;
-	stackInt.pop(); // удаляем верхний элемент 
+	std::cout << "Верхний элемент стека: " << stackInt.top() << std::endl;
+	stackInt.pop(); // удаляем верхний элемент (автоматически очищает стек)
 
-	std::cout « "Новый верхний элемент: " « stackInt.top()« std::endl;
+	std::cout << "Новый верхний элемент: " << stackInt.top()<< std::endl;
 
 	// ЗАДАНИЕ 1 
 	/*
@@ -85,18 +86,18 @@ int main()
 	*/
 
 	std::queue <int> MyQueue; // создали очередь 
-	std::cout « "Введите 7 чисел: " « std::endl;
+	std::cout << "Введите 7 чисел: " << std::endl;
 	for (i = 0; i < 7; i++) {
-		std::cin » a;
+		std::cin >> a;
 		MyQueue.push(a); // добавляем в очередь элементы 
 	}
-	std::cout « std::endl;
-	std::cout « "Первый элемент в очереди: " « MyQueue.front() « std::endl;
+	std::cout << std::endl;
+	std::cout << "Первый элемент в очереди: " << MyQueue.front() << std::endl;
 	MyQueue.pop(); // удаляем элемент из очереди 
-	std::cout « "Первый элемент (после удаления): " « MyQueue.front() « std::endl;
+	std::cout << "Первый элемент (после удаления): " << MyQueue.front() << std::endl;
 
 	if (!MyQueue.empty()) // проверяем пуста ли очередь (нет) 
-		std::cout « "Очередь не пуста!";
+		std::cout << "Очередь не пуста!";
 	/*
 	Очередь с приоритетом (priority_queue) — это обычная очередь,
 	но в ней новый элемент добавляется в такое место,
@@ -105,14 +106,14 @@ int main()
 
 	std::priority_queue <int> priority_q; // объявляем приоритетную очередь 
 
-	std::cout « "Введите 7 чисел: " « std::endl;
+	std::cout << "Введите 7 чисел: " << std::endl;
 	for (i = 0; i < 7; i++) {
-		std::cin » a;
+		std::cin >> a;
 		priority_q.push(a); // добавляем элементы в очередь 
 		std::copy(MyQueue.front(), MyQueue.back(), std::ostream_iterator<int>(cout, " "));
 	}
 	// выводим первый 
-	std::cout « "Первый элемент очереди: " « priority_q.top();
+	std::cout << "Первый элемент очереди: " << priority_q.top();
 
 	// ЗАДАНИЕ 2 
 	/*
