@@ -1,132 +1,89 @@
-//strings
-//пользователь с клавы вводит строчку и подстроку 
-//вывести строку и подстроку и  номера позиций, где встречается 
-
 #include "pch.h"
-#include <string>
-
-#include <cstring>
 #include <iostream>
-#include "fstream"
-
+#include <cstring> //для работы с С-строками ( strcat(), strlen(), strcmp() )
+#include <string> //для работы 
+#include <fstream>
 
 int main()
 {
-	// std::cout << "Hello World!\n"; 
-	char all[] = "C-style string1";
+	/*
+	char cstr1[] = "C-style string1";
+	char cstr2[] = { 'C','-','s','t','y','l','e',' ','s','t','i','n','g','1','\0' };
+	char cstr3[] = { '\67','\45',...,'\0' };
+	*/
+	/*
+	Вывод на печать осуществляется при помощи printf(char[], , ,) или printf(*char, , ,) - print formated
+	форматирование printf("базовая %s строка %f", параметр1, параметр2)
+	*/
+	/* значение символов форматирования берется из таблицы справки к функции http://www.cplusplus.com/reference
+	   %f - для float и double
+	   %s - для строк
+	   %d - для целых (int, long, long long)
+	   %e - для экспонициального вида
+	*/
+	/*
+	  Виды функций:
+		объединение (конкатенация) строк - strcat (*char, *char):
 
-	printf("%s", all);
-	//	printf("",all);
-	///printf("", all);
-	//printf("", all);
-	//printf("", all);
-	///	printf("", all);
+		копирование из одной строки в другую - strcpy():
+			char cstr3[255];
+			strcpy_s(cstr3, 255, cstr2);
+		сравнение - strcmp():
+			int i = strcmp(cstr1, cstr2);
+		длина строки - strlen():
+			int lngth = strlen(cstr1);
+		вставка строки в подстроку производится в несколько действий
+	*/
 
+	/*std::string cppstr1 = "C++ - style string1";
+	std::string cppstr2 = "";
+	cppstr2 = cppstr1; //для копирования перегруженных операторов "="
+	*/
 
-	//char cstr1[]="C-style string";
-	//char cstr2[]={'C','-','\0'};
-	//char cstr3[]={'\67','\45','\115','t','y'};
-	//в типе char на самом деле хранится знаковое целое число. Можно складывать, делить, умножать char.
-	//чтобы придать символьный смысл данным, хранимым в чар
-	//, нужна таблица соответствия чисел с символами - кодовая таблица(аски, анси, юникод)
-	//функции для работы с с-строками
-	//вывод на консоль printf("базовая %s строка %f",str1,str2);
-	//базовая строка
+	/*
+	Работа с файлами:
+		0.1) проверить существует ли файл
+		0.2) при работе в С++ - создать объект для работы с файлом
+		1) открытие файла
+		2) работа с файлом (чтение, запись, поиск)
+		3) закрытие файла
+		std::fstream - универсальный класс для ввода и для вывода (чтения из файла и записи в него)
+		std::(if/of)stream - класс для ввода/вывода
+		fstream -поток, предназначенный для ввода/вывода в/из файла
+	*/
+	//std::fstream fs;// 0. Создание объекта при работе в С++
 
-	//позиции, куда будут подставляться параметры в базовой строке. 
-	//https://www.cplusplus.com/reference
-	//
-	//%f - флотовое число, округляет до 6 знаков после запятой. 
-	//%10.2f будет 10 чисел(или проблелов) до точки  и два после
-	//%s - строка
-	//%c - символ
-	//%d - десятичное число
-	//%e - параметр подставляется на место е как число в экспоненциальном виде(12345=1.2345e+04)
-	//неверный тип - будет неправильный результат, но ошибки не напишет
-	//printf_s - ошибку напишет и не даст вывести ошибку - safe
-	//strcat()-конкатенация(склеивание)
-	//strlen()-длина строки
-	//strcmp()- сравнение(компейр)//аргументы - две строки
-	//положительное, если первое больше, отрицательное, если меньше(ли наоборот, я могла перепутать)
-	//qwe111rty
-	//strcpy(str1,str2)//copy если переменная-результат меньше, чем то, что туда копируется, ошибка доступа будет, поэтому
-	//лучше копировать в неинициализированный(не приравненный ни к чему) массив
-	//strcpy_s(str1,255,str2) - проверяет длину 255
-	//
-	//
-	//STRING
-	//Класс такой, чтобы удобно было работать со строками.
-	//cin считывает до пробела, а getline  - до энтера
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	/*	std::cout << std::endl;
-	std::string a,b;
-	getline(std::cin,a);
-	getline(std::cin, b);
-	int pos = 0;
-	//	while (pos!=-1) {
-	//	}
-	int kkk = 0;
-	for (int iter = 0; iter < a.length(); iter += a.find(b)) {
-	std::cout<<a.find(b,iter)+1<<" ";
-	//pos+= a.find(b) + 1;
-	//iter+=;
-	if (iter == a.npos) { break;}
-	//a.substr(a.length() - a.find(b) + 1);
+	// 1. Открытие файла
+	//fs.open("Some text file.txt", std::fstream::in | std::fstream::out | std::fstream::trunc);
 
-	}*/
+	/* Режимы открытия:
+			fs.open("Some text file.txt", - при открытии файла необходимо указать тип файла, а также режим открытия:
+				с перезаписью или без*/
 
-	//РАБОТА С ФАЙЛАМИ
-	std::fstream ff, sf;
-
-	ff.open("sometextfile.txt", std::fstream::in | std::fstream::out | std::fstream::trunc/*разрешение изменять файл*//*
-
-																													  | std::fstream::app - для записи в конец файла*/);
-	sf.open("sometextfile2.txt", std::fstream::in | std::fstream::out | std::fstream::trunc);
+				// 2. Вывод в файл
 
 
-	std::cout << std::endl;
-	std::string a, b;
-	getline(std::cin, a);
-	getline(std::cin, b);
-	int pos = 0;
+	std::fstream fs, text;
+	text.open("Cucumber.txt", std::fstream::in);
+	fs.open("Not Cucumber.txt", std::fstream::out);
 
-	//	while (pos!=-1) {
+	std::string str1;
+	std::string str2;
+	std::getline(text, str1);
+	std::getline(text, str2);
 
-	ff << a << "\n" << b << std::endl;
+	int pos = 0, temp = 0;
 
-	//	}
-	//	getline(ff, a);
-	//getline(ff, b);
-	ff >> a;
-	ff >> b;
-
-	//	std::cout << a<<"\n";
-	//	std::cout << b;
-
-	//int kkk = 0;
-	for (int iter = a.find(b); iter < a.length(); iter = a.find(b, iter)) {
-		std::cout << a.find(b, iter) + 1 << " ";
-		sf << a.find(b, iter) + 1 << " ";
-		iter++;
-		//pos+= a.find(b) + 1;
-		//iter+=;
-		if (iter == a.npos) { break; }
-		//a.substr(a.length() - a.find(b) + 1);
-
+	while (str1.find(str2, pos) != -1) {
+		pos = str1.find(str2, pos);
+		pos++;
+		temp++;
+		fs << pos << '\t';
 	}
-
-	//	while (pos!=-1) {
-
-	return 0;
+	if (temp == 0)
+		temp = -1;
+	fs << '\n' << temp;
+	fs.close();
 }
 
 

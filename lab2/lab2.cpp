@@ -1,7 +1,7 @@
 // lab2.cpp: определяет точку входа для консольного приложения.
 //
-
-#include "stdafx.h"
+#include "pch.h"
+//#include "stdafx.h"
 #include <iostream>
 using namespace std;
 int main()

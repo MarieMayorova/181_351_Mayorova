@@ -1,95 +1,152 @@
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include <iostream>
-class matrix
-{
+
+class matrix {
+
 private:
-	int rows, colums;
-	int matr[10][10];
+	int rows;
+	int columns;
+	double matr[10][10] = { {0} };
 
 public:
 	matrix();
 	~matrix();
-	bool sumMatrix(matrix matr2);
+
+	bool input();
+	void print();
+	bool summMatrix(matrix matr2);
 	bool multMatrix(matrix matr2);
 	bool transp();
-	bool print();
-	bool input();
-	int getRows()
-	{
-		return rows;
-	}
-	int getColums() 
-	{
-		return colums;
-	}
-	double getElem(int row, int col){
-		if (row < rows && col < colums && row>-1 && col>-1) { return matr[row][col]; }
-		else {
-			std::cout << "Index Error!\n";
-			return -1111111111;
-		};
-	};
 
+	int getRows();
+	int getColumns();
+	double getElem(int row, int col);
 };
+
+
+
 
 matrix::matrix()
 {
-	for (int row = 0; row < 10; row++) {
-		for (int col = 0; col < 10; col++)
-		{
-			matr[row][col]=0;
-		}
-	}
 }
+
 matrix::~matrix()
 {
 }
-bool matrix::sumMatrix(matrix matr2)
-{
-	if (rows != matr2.getRows())//Сравнить количестве строк текущей матрицы с количеством строк matr2
-	{
-		return false;
-	}
-	//Сравнить количестве столбцов текущей матрицы с количеством строк matr2
 
-	matr[row][col] += matr2.getElem(row, col);
-	return true;
-}
-bool matrix::transp()
-{
-	//int res[10][10];
-
-	return false;
-}
-bool  matrix::input()
+bool matrix::input()
 {
 	std::cin >> rows;
-	if (1 > rows || rows>10) { std::cout << "Error!\n"; return false; };
-	std::cin >> colums;
-	if (1 > colums || colums>10) { std::cout << "Error!\n"; return false; };
-
-	for (int row = 0; row < rows; row++) {
-		for (int col = 0; col < colums; col++)
-		{
-			std::cin >> matr[row][col];
+	if (rows < 1 || rows>10)
+		return false;
+	std::cin >> columns;
+	if (columns < 1 || columns>10)
+		return false;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			std::cin >> matr[i][j];
 		}
 	}
 	return true;
 }
 
+void matrix::print()
+{
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			std::cout << matr[i][j] << '\t';
+		}
+		std::cout << '\n';
+	}
+}
+
+bool matrix::summMatrix(matrix matr2)
+{
+	double result[10][10];
+	if ((rows == matr2.getRows()) && (columns == matr2.getColumns())) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				result[i][j] = matr[i][j] + matr2.getElem(i, j);
+				std::cout << result[i][j] << '\t';
+			}
+			std::cout << '\n';
+		}
+		return true;
+	}
+	else return false;
+}
+
+bool matrix::multMatrix(matrix matr2)
+{
+	double matr3[10][10];
+	if (columns == matr2.getRows()) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < rows; j++) {
+				double sum = 0;
+				for (int k = 0; k < matr2.getColumns(); k++) {
+					sum += matr[i][k] * matr2.getElem(k, j);
+				}
+				matr3[i][j] = sum;
+				std::cout << matr3[i][j] << '\t';
+			}
+			std::cout << '\n';
+		}
+		return true;
+	}
+	else return false;
+}
+
+bool matrix::transp()
+{
+	int ch;
+	if (rows != columns) {
+		ch = rows;
+		rows = columns;
+		columns = ch;
+	}
+	double temp = 0;
+	for (int i = 0; i < rows; i++) {
+		for (int j = i; j < columns; j++) {
+			temp = matr[i][j];
+			matr[i][j] = matr[j][i];
+			matr[j][i] = temp;
+		}
+	}
+	return true;
+}
+
+int matrix::getRows()
+{
+	return rows;
+}
+
+int matrix::getColumns()
+{
+	return columns;
+}
+
+double matrix::getElem(int row, int col)
+{
+	if (row<rows && col<columns && row>-1 && col>-1)
+		return matr[row][col];
+	else
+		return -11111111111;
+	std::cout << "Error!\n";
+	return -1;
+}
 int main()
 {
 	matrix matA, matB;
 	matA.input();
 	matB.input();
-	
+
 	matA.transp();
 	matA.print();
 
-	matA.sumMatrix(matB); //matA = matA + matB
-	matA.print();
+	matA.summMatrix(matB);//matA = matA + matB
+	matA.multMatrix(matB);
 
 	return 0;
 }
